@@ -12,5 +12,10 @@ namespace Abysalto.API.Services
             _productRepository = productRepository;
         }
 
+        public async Task<List<Product>> GetAllProducts()
+        {
+            return await _productRepository.GetAllProducts();
+        }
+
     }
 }

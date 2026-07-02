@@ -1,3 +1,6 @@
+using Abysalto.API.Repositories;
+using Abysalto.API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient<IProductRepository,ProductRepository>(client =>
+{
+    client.BaseAddress = new Uri("https://dummyjson.com/");
+});
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

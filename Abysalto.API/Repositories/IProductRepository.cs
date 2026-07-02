@@ -4,9 +4,9 @@ namespace Abysalto.API.Repositories
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetAllProducts();
-        Product GetProductById(int productId);
-        IEnumerable<Product> GetProductsByCategoryAndPrice(string category, float price);
-        Product GetProductByName(string name);
+        Task<List<Product>> GetAllProducts();
+        Task<Product?> GetProductById(int productId);
+        Task<List<Product>> GetProductsByCategoryAndPrice(string category, decimal price);
+        Task<Product?> GetProductByName(string name);
     }
 }
