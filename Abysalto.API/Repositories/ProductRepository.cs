@@ -1,6 +1,4 @@
 ﻿using Abysalto.API.Models;
-using System.Data;
-using System.Text.Json;
 
 namespace Abysalto.API.Repositories
 {
@@ -17,9 +15,8 @@ namespace Abysalto.API.Repositories
         {
             var response = await _httpClient.GetAsync("products?limit=0");
             response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadFromJsonAsync<List<Product>>();
-            return result ?? new List<Product>();
+            var productsWrapper = await response.Content.ReadFromJsonAsync<ProductResponse>();
+            return productsWrapper?.Products ?? new List<Product>();
         }
 
         public Task<Product?> GetProductById(int productId)
