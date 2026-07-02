@@ -6,7 +6,7 @@ namespace Abysalto.API.Repositories
     {
         Task<List<Product>> GetAllProducts();
         Task<Product?> GetProductById(int productId);
-        Task<List<Product>> GetProductsByCategoryAndPrice(string category, decimal price);
+        Task<List<Product>> GetProductsByCategory(string category);
         Task<List<Product>> GetProductsByName(string search);
     }
 }

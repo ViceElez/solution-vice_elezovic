@@ -27,9 +27,13 @@ namespace Abysalto.API.Repositories
             return product ?? new Product();
         }
 
-        public async Task<List<Product>> GetProductsByCategoryAndPrice(string category, decimal price)
+        public async Task<List<Product>> GetProductsByCategory(string category)
         {
-            throw new NotImplementedException();
+            Console.Write(category);
+            var response = await _httpClient.GetAsync($"products/category/{category}");
+            response.EnsureSuccessStatusCode();
+            var filteredProductsWrapper = await response.Content.ReadFromJsonAsync<ProductResponse>();
+            return filteredProductsWrapper?.Products ?? new List<Product>();
         }
 
         public async Task<List<Product>> GetProductsByName(string search)

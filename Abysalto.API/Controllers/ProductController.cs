@@ -33,7 +33,18 @@ namespace Abysalto.API.Controllers
             return Ok(product);
         }
 
-        [HttpGet("name/{search}")]
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetProductsByCategoryAndPrice([FromQuery] string? category, [FromQuery] decimal? minPrice,[FromQuery] decimal? maxPrice)
+        {
+            var products = await _productService.GetProductsByCategoryAndPrice(category,minPrice,maxPrice);
+            if (products == null || !products.Any())
+            {
+                return NotFound();
+            }
+            return Ok(products);
+        }
+
+        [HttpGet("search/{search}")]
         public async Task<IActionResult> GetProductsByName(string search)
         {
             var products = await _productService.GetProductsByName(search);

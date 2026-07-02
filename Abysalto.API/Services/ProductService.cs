@@ -27,6 +27,29 @@ namespace Abysalto.API.Services
             return await _productRepository.GetProductById(productId);
         }
 
+        public async Task<List<Product>> GetProductsByCategoryAndPrice(string? category, decimal? minPrice, decimal? maxPrice)
+        {
+            if (minPrice.HasValue && minPrice.Value < 0)
+                throw new ArgumentException("Min price must be greater than or equal to zero.");
+
+            if (maxPrice.HasValue && maxPrice.Value < 0)
+                throw new ArgumentException("Max price must be greater than or equal to zero.");
+
+            if (minPrice.HasValue && maxPrice.HasValue && maxPrice.Value < minPrice.Value)
+                throw new ArgumentException("Max price must be greater than or equal to min price.");
+
+            var products = string.IsNullOrWhiteSpace(category)
+                ? await _productRepository.GetAllProducts()
+                : await _productRepository.GetProductsByCategory(category);
+
+            if (minPrice.HasValue)
+                products = products.Where(p => p.Price >= minPrice.Value).ToList();
+            if (maxPrice.HasValue)
+                products = products.Where(p => p.Price <= maxPrice.Value).ToList();
+
+            return products;
+        }
+
         public async Task<List<Product>> GetProductsByName(string search)
         {
             if (string.IsNullOrWhiteSpace(search))
