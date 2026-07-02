@@ -19,19 +19,25 @@ namespace Abysalto.API.Repositories
             return productsWrapper?.Products ?? new List<Product>();
         }
 
-        public Task<Product?> GetProductById(int productId)
+        public async Task<Product?> GetProductById(int productId)
+        {
+            var response = await _httpClient.GetAsync($"products/{productId}");
+            response.EnsureSuccessStatusCode();
+            var product=await response.Content.ReadFromJsonAsync<Product>();
+            return product ?? new Product();
+        }
+
+        public async Task<List<Product>> GetProductsByCategoryAndPrice(string category, decimal price)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Product?> GetProductByName(string name)
+        public async Task<List<Product>> GetProductsByName(string search)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Product>> GetProductsByCategoryAndPrice(string category, decimal price)
-        {
-            throw new NotImplementedException();
+            var response =await _httpClient.GetAsync($"products/search?q={search}");
+            response.EnsureSuccessStatusCode();
+            var filteredProductsWrapper = await response.Content.ReadFromJsonAsync<ProductResponse>();
+            return filteredProductsWrapper?.Products ?? new List<Product>();
         }
     }
 }
