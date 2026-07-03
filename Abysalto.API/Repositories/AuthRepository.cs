@@ -1,4 +1,5 @@
 ﻿using Abysalto.API.DTOs;
+using System.Net.Http.Headers;
 
 namespace Abysalto.API.Repositories
 {
@@ -40,6 +41,14 @@ namespace Abysalto.API.Repositories
                 AccessToken = content?.AccessToken,
                 RefreshToken = content?.RefreshToken
             };
+        }
+
+        public async Task<bool> ValidateToken(string accessToken)
+        { 
+            var request= new HttpRequestMessage(HttpMethod.Get, "auth/me");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await _httpClient.SendAsync(request);
+            return response.IsSuccessStatusCode;
         }
     }
 }

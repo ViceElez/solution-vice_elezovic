@@ -1,4 +1,5 @@
 ﻿using Abysalto.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Abysalto.API.Controllers
@@ -30,6 +31,12 @@ namespace Abysalto.API.Controllers
             if (refreshResponse == null)
                 return NotFound();
             return Ok(refreshResponse);
+        }
+
+        [HttpGet("validate")]
+        public async Task<bool> ValidateToken(string accessToken)
+        {
+            return await _authService.ValidateToken(accessToken);
         }
     }
 }

@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient<IProductRepository,ProductRepository>(client =>
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient<IProductRepository, ProductRepository>(client =>
 {
     client.BaseAddress = new Uri("https://dummyjson.com/");
 });

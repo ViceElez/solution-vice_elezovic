@@ -1,5 +1,6 @@
 ﻿using Abysalto.API.DTOs;
 using Abysalto.API.Repositories;
+using System.ComponentModel;
 
 namespace Abysalto.API.Services
 {
@@ -20,6 +21,11 @@ namespace Abysalto.API.Services
         public async Task<UserLoginResponseDto> RefreshToken(string refreshToken)
         {
             return await _authRepository.RefreshToken(refreshToken);
+        }
+
+        public async Task<bool> ValidateToken(string accessToken)
+        {
+            return await _authRepository.ValidateToken(accessToken);
         }
     }
 }

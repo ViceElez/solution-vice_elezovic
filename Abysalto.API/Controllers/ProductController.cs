@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Abysalto.API.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Abysalto.API.Controllers
 {

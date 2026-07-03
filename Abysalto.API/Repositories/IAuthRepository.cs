@@ -1,5 +1,4 @@
 ﻿using Abysalto.API.DTOs;
-using Abysalto.API.Models;
 
 namespace Abysalto.API.Repositories
 {
@@ -8,6 +7,8 @@ namespace Abysalto.API.Repositories
         Task<UserLoginResponseDto> Login(string username, string password);
 
         Task<UserLoginResponseDto> RefreshToken(string refreshToken);
+
+        Task<bool> ValidateToken(string accessToken);
 
     }
 }
