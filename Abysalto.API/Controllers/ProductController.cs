@@ -27,9 +27,7 @@ namespace Abysalto.API.Controllers
         {
             var product = await _productService.GetProductById(productId);
             if (product == null)
-            {
                 return NotFound();
-            }
             return Ok(product);
         }
 
@@ -38,9 +36,7 @@ namespace Abysalto.API.Controllers
         {
             var products = await _productService.GetProductsByCategoryAndPrice(category,minPrice,maxPrice);
             if (products == null || !products.Any())
-            {
                 return NotFound();
-            }
             return Ok(products);
         }
 
@@ -49,9 +45,7 @@ namespace Abysalto.API.Controllers
         {
             var products = await _productService.GetProductsByName(search);
             if (products == null)
-            {
                 return NotFound();
-            }
             return Ok(products);
         }
     }

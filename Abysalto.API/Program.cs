@@ -14,7 +14,12 @@ builder.Services.AddHttpClient<IProductRepository,ProductRepository>(client =>
 {
     client.BaseAddress = new Uri("https://dummyjson.com/");
 });
+builder.Services.AddHttpClient<IAuthRepository, AuthRepository>(client =>
+{
+    client.BaseAddress = new Uri("https://dummyjson.com/");
+});
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<AuthService>();
 
 var app = builder.Build();
 
