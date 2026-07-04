@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Abysalto.API.Services;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Abysalto.API.Controllers
 {
@@ -36,8 +35,6 @@ namespace Abysalto.API.Controllers
         public async Task<IActionResult> GetProductsByCategoryAndPrice([FromQuery] string? category, [FromQuery] decimal? minPrice,[FromQuery] decimal? maxPrice)
         {
             var products = await _productService.GetProductsByCategoryAndPrice(category,minPrice,maxPrice);
-            if (products == null || !products.Any())
-                return NotFound();
             return Ok(products);
         }
 
@@ -45,8 +42,6 @@ namespace Abysalto.API.Controllers
         public async Task<IActionResult> GetProductsByName(string search)
         {
             var products = await _productService.GetProductsByName(search);
-            if (products == null)
-                return NotFound();
             return Ok(products);
         }
     }

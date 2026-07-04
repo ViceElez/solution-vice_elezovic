@@ -22,6 +22,7 @@ builder.Services.AddHttpClient<IAuthRepository, AuthRepository>(client =>
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<AuthService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
