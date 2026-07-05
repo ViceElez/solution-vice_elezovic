@@ -66,7 +66,7 @@ Rješenje ima 7 implementiranih endpointa:
 
 ## 6. Endpoint koji refresha token
 **Ruta:** POST `/Auth/refresh`
-**Opis:** Prima važeći `refreshToken`, vraća `accessToken` bez potrebe za ponovnim unosom kredencijala.
+**Opis:** Prima važeći `refreshToken`, vraća `accessToken` i `refreshToken` bez potrebe za ponovnim unosom kredencijala.
 
 ## 7. Endpoint koji validira ispravnost tokena
 **Ruta:** GET `/Auth/validate`
