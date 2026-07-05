@@ -24,7 +24,7 @@ namespace Abysalto.API.Services
             if (productId <= 0)
             {
                 _logger.LogWarning("Invalid product ID: {ProductId}. Product ID must be greater than zero.", productId);
-                throw new ArgumentException("Product ID must be greater than zero.", nameof(productId));
+                throw new ArgumentException("Product ID must be greater than zero.");
             }
             return await _productRepository.GetProductById(productId);
         }

@@ -25,24 +25,50 @@ namespace Abysalto.API.Controllers
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById(int productId)
         {
-            var product = await _productService.GetProductById(productId);
-            if (product == null)
-                return NotFound();
-            return Ok(product);
+            try
+            {
+                var product = await _productService.GetProductById(productId);
+                if (product == null) 
+                { 
+                    return NotFound();
+                }
+                return Ok(product);
+            }
+            catch (Exception ex)
+            { 
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("filter")]
-        public async Task<IActionResult> GetProductsByCategoryAndPrice([FromQuery] string? category, [FromQuery] decimal? minPrice,[FromQuery] decimal? maxPrice)
+        public async Task<IActionResult> GetProductsByCategoryAndPrice([FromQuery] string? category, [FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice)
         {
-            var products = await _productService.GetProductsByCategoryAndPrice(category,minPrice,maxPrice);
-            return Ok(products);
+            try
+            {
+                var products = await _productService.GetProductsByCategoryAndPrice(category, minPrice, maxPrice);
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("search/{search}")]
         public async Task<IActionResult> GetProductsByName(string search)
         {
-            var products = await _productService.GetProductsByName(search);
-            return Ok(products);
+            try
+            {
+                var products = await _productService.GetProductsByName(search);
+                return Ok(products);
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
         }
     }
 }
