@@ -39,23 +39,23 @@ Rješenje ima 7 implementiranih endpointa:
 7. Endpoint koji validira ispravnost tokena
 
 ## 1. Endpoint koji vraća listu proizvoda
-**Ruta:** GET `/products`
+**Ruta:** GET `/Product`
 **Opis:** Lista svih proizvoda (slika, naziv, cijena, skraćeni opis do 100 znakova). Rezultat se cachira 5 minuta kako bi se izbjeglo ponovno pozivanje DummyJSON-a.
 
 ## 2. Endpoint koji vraća detalje jednog proizvoda
-**Ruta:** GET `/products/{id}`
+**Ruta:** GET `/Product/{id}`
 **Opis:** Vraća pune detalje jednog proizvoda po ID-u. Ako proizvod ne postoji, vraća `404 Not Found`.
 
 ## 3. Endpoint koji omogućava filtriranje po kategoriji i cijeni
-**Ruta:** GET `/products/filter`
+**Ruta:** GET `/Product/filter`
 **Opis:** Filtrira proizvode po kategoriji i/ili rasponu cijene. Svi parametri su opcionalni i mogu se kombinirati. Kategorija se dohvaća server-side (DummyJSON endpoint), dok se cijena filtrira lokalno jer to DummyJSON ne podržava.
 
 ## 4. Endpoint koji za uneseni tekst pretražuje proizvode po nazivu
-**Ruta:** GET `/products/search`
+**Ruta:** GET `/Product/search/{search}`
 **Opis:** Pretražuje proizvode po nazivu koristeći DummyJSON-ov server-side search endpoint. Parametar `term` je obavezan.
 
 ## 5. Endpoint koji zove login
-**Ruta:** POST `/auth/login`
+**Ruta:** POST `/Auth/login`
 **Opis:** Prima `username` i `password`, provjerava kredencijale putem DummyJSON-a, te izdaje vlastiti JWT (`accessToken`) i `refreshToken`. Primjer tijela zahtjeva:
 ```json
 {
@@ -65,11 +65,11 @@ Rješenje ima 7 implementiranih endpointa:
 ```
 
 ## 6. Endpoint koji refresha token
-**Ruta:** POST `/auth/refresh`
+**Ruta:** POST `/Auth/refresh`
 **Opis:** Prima važeći `refreshToken`, izdaje novi `accessToken` bez potrebe za ponovnim unosom kredencijala.
 
 ## 7. Endpoint koji validira ispravnost tokena
-**Ruta:** GET `/auth/validate`
+**Ruta:** GET `/Auth/validate`
 **Opis:** Provjerava je li poslani `accessToken` i dalje važeći.
 
 ## Korištenje AI alata

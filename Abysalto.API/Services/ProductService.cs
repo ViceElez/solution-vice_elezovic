@@ -1,5 +1,6 @@
 ﻿using Abysalto.API.Repositories;  
 using Abysalto.API.Models;
+using Abysalto.API.DTOs;
 
 namespace Abysalto.API.Services
 {
@@ -14,9 +15,25 @@ namespace Abysalto.API.Services
             _logger = logger;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<List<ProductDto>> GetAllProducts()
         {
-            return await _productRepository.GetAllProducts();
+            var allProducts= await _productRepository.GetAllProducts();
+            var productsWithShorterDescrption= new List<ProductDto>();
+            foreach (var product in allProducts) 
+            {
+                productsWithShorterDescrption.Add(new ProductDto
+                {
+                    Id = product.Id,
+                    Title = product.Title,
+                    Price = product.Price,
+                    Category = product.Category,
+                    Description = !String.IsNullOrWhiteSpace(product.Description) && product.Description.Length > 100
+                                ? product.Description.Substring(0, 100) + "..."
+                                : product.Description,
+                    ImageUrl = product.ImageUrl
+                });
+            }
+            return productsWithShorterDescrption;
         }
 
         public async Task<Product?> GetProductById(int productId)
@@ -29,7 +46,7 @@ namespace Abysalto.API.Services
             return await _productRepository.GetProductById(productId);
         }
 
-        public async Task<List<Product>> GetProductsByCategoryAndPrice(string? category, decimal? minPrice, decimal? maxPrice)
+        public async Task<List<ProductDto>> GetProductsByCategoryAndPrice(string? category, decimal? minPrice, decimal? maxPrice)
         {
             if (minPrice.HasValue && minPrice.Value < 0)
             {
@@ -63,7 +80,7 @@ namespace Abysalto.API.Services
             return products;
         }
 
-        public async Task<List<Product>> GetProductsByName(string search)
+        public async Task<List<ProductDto>> GetProductsByName(string search)
         {
             if (string.IsNullOrWhiteSpace(search))
             {

@@ -1,7 +1,7 @@
-﻿namespace Abysalto.API.Models
+﻿namespace Abysalto.API.DTOs
 {
     public class ProductResponse
     {
-        public List<Product> Products { get; set; } = new();
+        public List<ProductDto> Products { get; set; } = new();
     }
 }
