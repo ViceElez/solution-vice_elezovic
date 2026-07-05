@@ -1,4 +1,4 @@
-﻿namespace Abysalto.API.DTOs
+﻿namespace Abysalto.API.DTOs.Products
 {
     public class ProductDto
     {

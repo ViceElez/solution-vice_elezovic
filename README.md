@@ -56,7 +56,7 @@ Rješenje ima 7 implementiranih endpointa:
 
 ## 5. Endpoint koji zove login
 **Ruta:** POST `/Auth/login`
-**Opis:** Prima `username` i `password`, provjerava kredencijale putem DummyJSON-a, te izdaje vlastiti JWT (`accessToken`) i `refreshToken`. Primjer tijela zahtjeva:
+**Opis:** Prima `username` i `password`, provjerava kredencijale putem DummyJSON-a, te vraća `accessToken` i `refreshToken`. Primjer tijela zahtjeva:
 ```json
 {
   "username": "emilys",
@@ -66,7 +66,7 @@ Rješenje ima 7 implementiranih endpointa:
 
 ## 6. Endpoint koji refresha token
 **Ruta:** POST `/Auth/refresh`
-**Opis:** Prima važeći `refreshToken`, izdaje novi `accessToken` bez potrebe za ponovnim unosom kredencijala.
+**Opis:** Prima važeći `refreshToken`, vraća `accessToken` bez potrebe za ponovnim unosom kredencijala.
 
 ## 7. Endpoint koji validira ispravnost tokena
 **Ruta:** GET `/Auth/validate`

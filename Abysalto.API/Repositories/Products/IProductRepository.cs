@@ -1,4 +1,4 @@
-﻿using Abysalto.API.DTOs;
+﻿using Abysalto.API.DTOs.Products;
 using Abysalto.API.Models.Products;
 
 namespace Abysalto.API.Repositories.Products

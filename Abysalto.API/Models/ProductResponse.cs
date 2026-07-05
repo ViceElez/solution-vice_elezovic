@@ -1,4 +1,6 @@
-﻿namespace Abysalto.API.DTOs
+﻿using Abysalto.API.DTOs.Products;
+
+namespace Abysalto.API.DTOs
 {
     public class ProductResponse
     {

@@ -1,4 +1,4 @@
-﻿using Abysalto.API.DTOs;
+﻿using Abysalto.API.DTOs.Users;
 using Abysalto.API.Repositories.Auth;
 
 namespace Abysalto.API.Services
