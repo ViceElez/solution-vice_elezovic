@@ -1,7 +1,7 @@
-﻿using Abysalto.API.Models;
-using Abysalto.API.DTOs;
+﻿using Abysalto.API.DTOs;
+using Abysalto.API.Models.Products;
 
-namespace Abysalto.API.Repositories
+namespace Abysalto.API.Repositories.Products
 {
     public interface IProductRepository
     {

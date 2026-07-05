@@ -1,5 +1,5 @@
 ﻿using Abysalto.API.DTOs;
-using Abysalto.API.Repositories;
+using Abysalto.API.Repositories.Auth;
 
 namespace Abysalto.API.Services
 {

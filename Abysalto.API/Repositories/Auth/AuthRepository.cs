@@ -1,7 +1,7 @@
 ﻿using Abysalto.API.DTOs;
 using System.Net.Http.Headers;
 
-namespace Abysalto.API.Repositories
+namespace Abysalto.API.Repositories.Auth
 {
     public class AuthRepository : IAuthRepository
     {

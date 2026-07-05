@@ -1,4 +1,5 @@
-using Abysalto.API.Repositories;
+using Abysalto.API.Repositories.Auth;
+using Abysalto.API.Repositories.Products;
 using Abysalto.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);

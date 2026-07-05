@@ -1,4 +1,4 @@
-﻿namespace Abysalto.API.Models
+﻿namespace Abysalto.API.Models.Products
 {
     public class Product
     {

@@ -1,6 +1,6 @@
 ﻿using Abysalto.API.DTOs;
 
-namespace Abysalto.API.Repositories
+namespace Abysalto.API.Repositories.Auth
 {
     public interface IAuthRepository
     {
